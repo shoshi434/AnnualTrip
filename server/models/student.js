@@ -1,25 +1,25 @@
 const e = require('express');
-const mongoose = require('mongoose');
-const teacherSchema = new mongoose.Schema({
+const mogoose = require('mongoose');
+const studentSchema = new mogoose.Schema({
   fullName: {
     type: String,
     required: true,
     minlength: 3,
     maxlength: 50
   },
-  id: {
+    id: {
     type: String,
     required: true,
     unique: true,
     minlength: 5,
     maxlength: 9
   },
-  className: {
+    className: {
     type: String,
     required: true,
     enum: ['ו-1', 'ו-2', 'ו-3', 'ו-4', 'ו-5', 'ו-6']
   }
 }, { timestamps: true });
 
- module.exports = mongoose.model('Teacher', teacherSchema);
-
+const Student = mogoose.model('Student', studentSchema);
+module.exports = Student;
