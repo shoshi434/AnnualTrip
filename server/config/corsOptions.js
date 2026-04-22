@@ -1,5 +1,7 @@
+//רשימה לבנה של מקורות שמותר להם לגשת לשרת שלנו
 const allowedOrigins = [
-  'http://localhost:3000'
+  'http://localhost:3000',
+  'http://localhost:3001'
 ];
 
 const corsOptions = {

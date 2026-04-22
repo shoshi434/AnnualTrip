@@ -17,6 +17,7 @@ app.use(express.static('public'));
 // Routes
 app.use('/api/teachers', require('./router/teacher'));
 app.use('/api/auth', require('./router/auth'));
+app.use('/api/students', require('./router/student'));
 
 //run
 

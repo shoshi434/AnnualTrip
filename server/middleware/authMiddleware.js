@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 
+// לבדוק שהמשתמש מחובר עם טוקן תקין middleware
 const authMiddleware = (req, res, next) => {
     const authHeader = req.headers.authorization || req.headers.Authorization;
     if (!authHeader?.startsWith('Bearer ')) {
@@ -14,7 +15,7 @@ const authMiddleware = (req, res, next) => {
         next();
     });
 };
-//מידלוואר לבדוק שאכן רק מורה יכול לגשת לנתיב מסוים
+// לבדוק שאכן רק מורה יכול לגשת לנתיב מסוים middleware
 const onlyTeachers = (req, res, next) => {
     if (req.user.role !== 'teacher') {
         return res.status(403).json({ message: 'Forbidden' });

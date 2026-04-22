@@ -13,9 +13,9 @@ const HomePage = () => {
   const handleClose = () => setOpen(false);
   const navigate = useNavigate();
   return (
-    <>
-      <h1>ברוכים הבאים לאתר ניהול הטיול השנתי</h1>
-      <p>אנא בחרו את סוג המשתמש שלכם כדי להמשיך</p>
+    <div className="home-container">
+      <h1 className="title">ברוכים הבאים לאתר ניהול הטיול השנתי</h1>
+      <p className="subtitle">אנא בחרו את סוג המשתמש שלכם כדי להמשיך</p>
       <div className="button-container">
       <Button variant="contained" sx={{height: "50px",width: "200px", fontWeight: 700, fontSize: "22px", backgroundColor: 'orange','&:hover': {backgroundColor: 'darkorange', color: 'white'}, }} onClick={handleOpen}>תלמידה</Button>
       <Button variant="contained" sx={{height: "50px", width: "200px", fontWeight: 700, fontSize: "22px", backgroundColor: 'orange','&:hover': {backgroundColor: 'darkorange', color: 'white'}, }} onClick={() => navigate("/teacherLogin")}>מורה</Button>
@@ -23,12 +23,12 @@ const HomePage = () => {
       </div>
 
      <Dialog open={open} onClose={handleClose} fullWidth maxWidth="sm">
-        <DialogTitle>רישום לטיול כיתות ו </DialogTitle>
+        <DialogTitle sx={{fontWeight: 700 , textAlign: 'center' }}>רישום לטיול כיתות ו </DialogTitle>
         <DialogContent>
-          <RegisterForTrip/>
+          <RegisterForTrip handleClose={handleClose}/>
         </DialogContent>
       </Dialog>
-    </>
+    </div>
   );
 };
 
