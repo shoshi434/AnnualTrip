@@ -3,7 +3,7 @@ import TeacherNavigation from "./teacherNavigation";
 
 const TeacherLayout = () => {
   return (
-    <div>
+    <div style={{ paddingTop: "60px" }}>
       <TeacherNavigation />
       <Outlet />
     </div>

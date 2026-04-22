@@ -1,18 +1,28 @@
 import { NavLink , useNavigate } from "react-router-dom";
 import "./navigation.css";
+import {jwtDecode} from "jwt-decode";
 
 const TeacherNavigation = () => {
   const navigate = useNavigate();
 
+  const token = localStorage.getItem("token");
+  const decodedToken = token ? jwtDecode(token) : null;
+  const studentName = decodedToken ? decodedToken.fullName : null;
+
   const handleLogout = () => {
     navigate("/");
+    localStorage.removeItem('token');
   };
 
   return (
     <nav className="teacher-nav">
-      <NavLink to="/teacher/teachers" className="nav-link">מורות</NavLink>
-      <NavLink to="/teacher/students" className="nav-link">תלמידות</NavLink>
-      <button onClick={handleLogout} className="logout-btn">Logout</button>
+      <h3>שלום, {studentName}</h3>
+      <div className="nav-links">
+        <NavLink to="/teacher/teachers" className="nav-link">כל המורות </NavLink>
+        <NavLink to="/teacher/students" className="nav-link">כל התלמידות</NavLink>
+        <NavLink to="/teacher/detection" className="nav-link">איתור תלמידות אבודות</NavLink>
+      </div>
+      <button onClick={handleLogout} className="logout-btn">יציאה</button>
     </nav>
   );
 };

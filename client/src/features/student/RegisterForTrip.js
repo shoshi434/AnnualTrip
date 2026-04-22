@@ -22,7 +22,7 @@ const RegisterForTrip = ({ handleClose }) => {
                 if (error.response.status === 400) {
                     setError('תלמידה עם תעודת זהות זו כבר רשומה');
                 } else {
-                    setError('שגיאה בהרשמת התלמיד בדקי את הפרטים ונסי שוב');
+                    setError('שגיאה בהרשמת התלמידה בדקי את הפרטים ונסי שוב');
                 }
             } else {
                 setError('שגיאה בהתחברות לשרת');

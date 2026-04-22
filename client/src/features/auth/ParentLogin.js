@@ -25,7 +25,7 @@ const ParentLogin = () => {
                 if (error.response.status === 404) {
                     setError('תעודת הזהות שלך לא קיימת במערכת');
                 } else {
-                    setError('שגיאה בכניסה. אנא נסה שוב.');
+                    setError('שגיאה בכניסה אנא נסה שוב');
                 }
             } else {
                 setError('שגיאה בהתחברות לשרת');

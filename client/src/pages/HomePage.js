@@ -23,7 +23,7 @@ const HomePage = () => {
       </div>
 
      <Dialog open={open} onClose={handleClose} fullWidth maxWidth="sm">
-        <DialogTitle sx={{fontWeight: 700 , textAlign: 'center' }}>רישום לטיול כיתות ו </DialogTitle>
+        <DialogTitle sx={{fontWeight: 700 , textAlign: 'center' }}> נרשמים לטיול הקרוב של כיתות ו :) מלאו את הפרטים הבאים</DialogTitle>
         <DialogContent>
           <RegisterForTrip handleClose={handleClose}/>
         </DialogContent>
