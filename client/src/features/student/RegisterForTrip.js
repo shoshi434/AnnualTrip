@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import {createStudent} from '../../api/studentApi';
+import { orangeField } from '../muiStyles';
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button, Typography, TextField, Select, MenuItem, FormControl, InputLabel, Box } from '@mui/material';
 
 const RegisterForTrip = ({ handleClose }) => {
@@ -51,14 +52,6 @@ const RegisterForTrip = ({ handleClose }) => {
             </Dialog>
         );
     }
-
-const orangeField = {
-        '& label.Mui-focused': { color: 'darkorange' },
-        '& .MuiOutlinedInput-root': {
-            '&:hover fieldset': { borderColor: 'orange' },
-            '&.Mui-focused fieldset': { borderColor: 'darkorange' },
-        },
-    };
 
     return (
         <Box dir="rtl" sx={{ pt: 1 }}>

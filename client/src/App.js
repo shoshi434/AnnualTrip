@@ -4,6 +4,7 @@ import TeacherLayout from './routs/teacherLayout';
 import HomePage from "./pages/HomePage";
 import TeacherLogin from './features/auth/TeacherLogin';
 import ParentLogin from './features/auth/ParentLogin';
+import Tracking from './features/parent/Tracking';
 
 function App() {
   return (
@@ -11,10 +12,10 @@ function App() {
     <Router>
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/tracking" element={<h1>Tracking Page</h1>} />
+      <Route path="/tracking" element={<Tracking />} />
       <Route path="/parentLogin" element={<ParentLogin />} />
       <Route path="/teacherLogin" element={<TeacherLogin />} />
-      
+
       <Route path="/teacher" element={<TeacherLayout />} >
         <Route path="teachers" element={<h1>Teachers Page</h1>} />
         <Route path="students" element={<h1>Students Page</h1>} />

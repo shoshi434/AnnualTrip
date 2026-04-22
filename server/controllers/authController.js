@@ -1,3 +1,4 @@
+const Student = require('../models/student');
 const Teacher = require('../models/teacher');
 const jwt = require('jsonwebtoken');
 
@@ -21,7 +22,7 @@ const teacherLogin = async (req, res) => {
 const parentLogin = async (req, res) => {
     const { id } = req.body;
     try {
-        const parent = await Parent.findOne({ id });
+        const parent = await Student.findOne({ id });
         if (!parent) {
             return res.status(404).json({ message: 'הורה לא נמצא' });
         }

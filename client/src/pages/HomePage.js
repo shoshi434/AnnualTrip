@@ -14,8 +14,8 @@ const HomePage = () => {
   const navigate = useNavigate();
   return (
     <div className="home-container">
-      <h1 className="title">ברוכים הבאים לאתר ניהול הטיול השנתי</h1>
-      <p className="subtitle">אנא בחרו את סוג המשתמש שלכם כדי להמשיך</p>
+      <h1 className="title">:)ככה עושים היום טיול</h1>
+      <p className="subtitle">?מי את/ה</p>
       <div className="button-container">
       <Button variant="contained" sx={{height: "50px",width: "200px", fontWeight: 700, fontSize: "22px", backgroundColor: 'orange','&:hover': {backgroundColor: 'darkorange', color: 'white'}, }} onClick={handleOpen}>תלמידה</Button>
       <Button variant="contained" sx={{height: "50px", width: "200px", fontWeight: 700, fontSize: "22px", backgroundColor: 'orange','&:hover': {backgroundColor: 'darkorange', color: 'white'}, }} onClick={() => navigate("/teacherLogin")}>מורה</Button>
