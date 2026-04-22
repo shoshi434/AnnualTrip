@@ -39,7 +39,6 @@
 
 .nav-link:hover,
 .nav-link.active {
-    color: white !important;
     text-decoration: underline !important;
 }
 
