@@ -7,6 +7,7 @@ import ParentLogin from './features/auth/ParentLogin';
 import Tracking from './features/parent/Tracking';
 import TeacherRegister from './features/auth/TeacherRegister';
 import StudentsList from './features/teacher/StudentsList';
+import TeachersList from './features/teacher/TeachersList';
 
 function App() {
   return (
@@ -20,7 +21,8 @@ function App() {
       <Route path="/teacherRegister" element={<TeacherRegister />} />
 
       <Route path="/teacher" element={<TeacherLayout />} >
-        <Route path="teachers" element={<h1>Teachers Page</h1>} />
+        <Route index element={<StudentsList />} />
+        <Route path="teachers" element={<TeachersList />} />
         <Route path="students" element={<StudentsList />} />
         <Route path="detection" element={<h1>Detection Page</h1>} />
       </Route>

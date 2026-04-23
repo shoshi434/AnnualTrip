@@ -5,15 +5,15 @@ import { orangeFieldWhite } from "../muiStyles";
 import { teacherLogin } from "../../api/teacherApi";
 
 const TeacherLogin = () => {
-    const [teacherId, setTeacherId] = useState('');
-    const [error, setError] = useState(null);
+    const [teacherId, setTeacherId] = useState("");
+    const [error, setError] = useState("");
     const navigate = useNavigate();
 
     const handleLogin = async () => {
         const details = { id : teacherId };
         try {
             if (!teacherId) {
-                setError('אנא הזן את מספר תעודת הזהות שלך');
+                setError("אנא הזן את מספר תעודת הזהות שלך");
                 return;
             }
             const response = await teacherLogin(details);
@@ -22,12 +22,12 @@ const TeacherLogin = () => {
         } catch (error) {
             if (error.response) {
                 if (error.response.status === 404) {
-                    setError('תעודת הזהות שלך לא קיימת במערכת, ניתן להירשם ולנסות שוב');
+                    setError("תעודת הזהות שלך לא קיימת במערכת, ניתן להירשם ולנסות שוב");
                 } else {
-                    setError('שגיאה בכניסה אנא נסה שוב');
+                    setError("שגיאה בכניסה אנא נסה שוב");
                 }
             } else {
-                setError('שגיאה ברשת');
+                setError("שגיאה ברשת");
             }
         }
     };

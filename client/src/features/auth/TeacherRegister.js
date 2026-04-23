@@ -6,30 +6,30 @@ import { orangeFieldWhite } from "../muiStyles";
 const TeacherRegister = () => {
     const navigate = useNavigate();
     const [teacherData, setTeacherData] = useState({fullName: '',id: '',className: '' });
-    const [error, setError] = useState('');
-    const [success, setSuccess] = useState('');
+    const [error, setError] = useState("");
+    const [success, setSuccess] = useState("");
 
     const handleRegister = async () => {
         try {
             if (!teacherData.fullName || !teacherData.id || !teacherData.className) {
-                setError('נא למלא את כל השדות');
+                setError("נא למלא את כל השדות");
                 return;
             }
             await createTeacher(teacherData);
-            setError('');
-            setSuccess('נרשמת בהצלחה!');
+            setError("");
+            setSuccess("נרשמת בהצלחה!");
                 setTimeout(() => {
                     navigate('/teacherLogin');
                 }, 2000);
         } catch (error) {
             if (error.response) {
                 if (error.response.status === 400) {
-                    setError('מורה עם תעודת זהות זו כבר רשומה');
+                    setError("מורה עם תעודת זהות זו כבר רשומה");
                 } else {
-                    setError('שגיאה בהרשמת המורה בדקי את הפרטים ונסי שוב');
+                    setError("שגיאה בהרשמת המורה בדקי את הפרטים ונסי שוב");
                 }
             } else {
-                setError('שגיאה בהתחברות לשרת');
+                setError("שגיאה בהתחברות לשרת");
             }
         }
     };

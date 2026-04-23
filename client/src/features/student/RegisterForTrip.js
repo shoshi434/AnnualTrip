@@ -5,27 +5,27 @@ import { Dialog, DialogTitle, DialogContent, DialogActions, Button, Typography, 
 
 const RegisterForTrip = ({ handleClose }) => {
     const [studentData, setStudentData] = useState({ fullName: '', id: '', className: '' });
-    const [error, setError] = useState(null);
+    const [error, setError] = useState("");
     const [successData, setSuccessData] = useState(null);
 
     const handleRegister = async () => {
         try {
             if (!studentData.fullName || !studentData.id || !studentData.className) {
-                setError('נא למלא את כל השדות');
+                setError("נא למלא את כל השדות");
                 return;
             }
             await createStudent(studentData);
-            setError(null);
+            setError("");
             setSuccessData({ ...studentData });
         } catch (error) {
             if (error.response) {
                 if (error.response.status === 400) {
-                    setError('תלמידה עם תעודת זהות זו כבר רשומה');
+                    setError("תלמידה עם תעודת זהות זו כבר רשומה");
                 } else {
-                    setError('שגיאה בהרשמת התלמידה בדקי את הפרטים ונסי שוב');
+                    setError("שגיאה בהרשמת התלמידה בדקי את הפרטים ונסי שוב");
                 }
             } else {
-                setError('שגיאה בהתחברות לשרת');
+                setError("שגיאה בהתחברות לשרת");
             }
         }
     };

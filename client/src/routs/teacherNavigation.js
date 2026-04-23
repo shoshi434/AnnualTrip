@@ -18,8 +18,9 @@ const TeacherNavigation = () => {
     <nav className="teacher-nav">
       <h3>שלום, {studentName}</h3>
       <div className="nav-links">
-        <NavLink to="/teacher/teachers" className="nav-link">כל המורות </NavLink>
-        <NavLink to="/teacher/students" className="nav-link">כל התלמידות</NavLink>
+        
+        <NavLink to="/teacher/teachers" className="nav-link">כל המורות הרשומות</NavLink>
+        <NavLink to="/teacher/students" className="nav-link">כל התלמידות שמצטרפות לטיול</NavLink>
         <NavLink to="/teacher/detection" className="nav-link">איתור תלמידות אבודות</NavLink>
       </div>
       <button onClick={handleLogout} className="logout-btn">יציאה</button>

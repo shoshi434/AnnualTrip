@@ -6,15 +6,15 @@ import { orangeFieldWhite } from "../muiStyles";
 
 const ParentLogin = () => {
     
-    const [studentId, setStudentId] = useState('');
-    const [error, setError] = useState(null);
+    const [studentId, setStudentId] = useState("");
+    const [error, setError] = useState("");
     const navigate = useNavigate();
 
     const handleLogin = async () => {
         const details = { id : studentId };
         try {
             if (!studentId) {
-                setError('אנא הזן את מספר תעודת הזהות של הילד');
+                setError("אנא הזן את מספר תעודת הזהות של הילד");
                 return;
             }
             const response = await parentLogin(details);
@@ -23,12 +23,12 @@ const ParentLogin = () => {
         } catch (error) {
             if (error.response) {
                 if (error.response.status === 404) {
-                    setError('תעודת הזהות שלך לא קיימת במערכת');
+                    setError("תעודת הזהות שלך לא קיימת במערכת");
                 } else {
-                    setError('שגיאה בכניסה אנא נסה שוב');
+                    setError("שגיאה בכניסה אנא נסה שוב");
                 }
             } else {
-                setError('שגיאה בהתחברות לשרת');
+                setError("שגיאה בהתחברות לשרת");
             }
         }
     };
