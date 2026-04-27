@@ -1,6 +1,6 @@
 const e = require('express');
-const mogoose = require('mongoose');
-const studentSchema = new mogoose.Schema({
+const mongoose = require('mongoose');
+const studentSchema = new mongoose.Schema({
   fullName: {
     type: String,
     required: true,
@@ -21,5 +21,5 @@ const studentSchema = new mogoose.Schema({
   }
 }, { timestamps: true });
 
-const Student = mogoose.model('Student', studentSchema);
+const Student = mongoose.model('Student', studentSchema);
 module.exports = Student;
