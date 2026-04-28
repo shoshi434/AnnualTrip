@@ -60,7 +60,7 @@
 
 ## 😌 איך משתמשים
 1. בוחרים משתמש
-![alt text](image-1.png)
+![alt text](image.png)
 2. אם אתה הורה- הזן ת"ז ותוכל לעקוב
 ![alt text](image-1.png)
 ![alt text](image-2.png)
