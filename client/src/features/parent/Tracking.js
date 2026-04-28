@@ -1,38 +1,11 @@
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
-import {Map , MapCameraChangedEvent , AdvancedMarker} from '@vis.gl/react-google-maps';
+import {Map , AdvancedMarker} from '@vis.gl/react-google-maps';
 import { useState , useEffect} from "react";
 import { getLocations } from "../../api/location";
 
-const Tracking = () => {
-    const navigate = useNavigate();
-    const [location, setLocation] = useState([]); 
 
-    const token = localStorage.getItem("token");
-    const decodedToken = token ? jwtDecode(token) : null;
-    const studentName = decodedToken ? decodedToken.childName : null;
-
-    const handleLogout = () => {
-        navigate("/");
-        localStorage.removeItem('token');
-    };
-
-    useEffect(() => {
-        const fetchLocations = async () => {
-            try {
-                const response = await getLocations();
-                setLocation(response.data);
-            } catch (error) {
-                console.error("Error fetching locations:", error);
-            }
-        };
-
-        fetchLocations();
-    }, []);
-
-
-
-const PoiMarkers = ({ list }) => {
+const PoiMarkers = ({ list, studentId }) => {
   return (
     <>
       {list.map( (poi) => (
@@ -51,7 +24,7 @@ const PoiMarkers = ({ list }) => {
               whiteSpace: 'nowrap',
               boxShadow: '0px 2px 4px rgba(0,0,0,0.2)'
             }}>
-              {poi.key}
+              {poi.key === studentId ? "הילד שלך" : `${poi.key}`}
             </div>
             <div style={{
               width: '20px',
@@ -68,21 +41,64 @@ const PoiMarkers = ({ list }) => {
   );
 };
 
+
+
+const Tracking = () => {
+    const navigate = useNavigate();
+    const [locations, setLocations] = useState([]); 
+    const [center, setCenter] = useState(null);
+    const token = localStorage.getItem("token");
+    const decodedToken = token ? jwtDecode(token) : null;
+    const studentName = decodedToken ? decodedToken.childName : null;
+    const studentId = decodedToken ? decodedToken.childId : null;
+
+    //כפתור יציאה
+    const handleLogout = () => {
+        navigate("/");
+        localStorage.removeItem('token');
+    };
+    //טעינת המיקומים ועדכון מרכז המפה לפי מקומי הילדים
+    useEffect(() => {
+        const fetchLocations = async () => {
+            try {
+                const response = await getLocations();
+                setLocations(response.data);
+                const childLocation = response.data.find(loc => loc.key === studentId);
+                if (childLocation) {
+                      setCenter(childLocation.location);
+                  }else {
+                      setCenter({ lat: response.data[0].location.lat, lng: response.data[0].location.lng });
+                  }
+                }
+            catch (error) {
+                console.error("Error fetching locations:", error);
+            }
+        };
+
+        fetchLocations();
+    }, [studentId]);
+
     return (
-        <div style={{backgroundColor: "#1a1a1a", height: "100vh", width: "100vw", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>   
-        <h1 style={{color:"white"}}>שלום להורה של {studentName}</h1>
-        <button onClick={handleLogout} className="logout-btn">יציאה</button>
-         <Map
-            defaultZoom={13}
-            defaultCenter={location[1]?.location}  
-            mapId={process.env.REACT_APP_MAP_ID}          
-            onCameraChanged={ (ev: MapCameraChangedEvent) =>
-                console.log('camera changed:', ev.detail.center, 'zoom:', ev.detail.zoom)
-            }>
-                  <PoiMarkers list={location} />
-        </Map>
-        </div>
-          
+        <div style={{backgroundColor: "#1a1a1a", height: "100vh", width: "100vw", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}> 
+          <div style={{display: "flex", alignItems: "center", width: "90vw" , justifyContent: "space-between"}}>
+            <button onClick={handleLogout} className="logout-btn">יציאה</button>
+            <h3 style={{color:"white", fontFamily: "Arial" , textAlign: "right"}}>שלום להורה של {studentName}, כאן ניתן לעקוב אחר מיקומה של ילדתך בזמן אמת <br/> שימו לב למיקום בייחס לשאר התלמידים הממוקמים על המפה, הילדה שלך מסומנת בתגית - הילד שלך <br/>במקרה של חשש לשלום ילדכם אנא דווחו בהקדם לצוות הטיול</h3>
+          </div>
+          {center ? (
+                      <Map
+                        defaultZoom={13}
+                        center={center}
+                        mapId={process.env.REACT_APP_MAP_ID}          
+                        onCameraChanged={ (ev) =>
+                        console.log('camera changed:', ev.detail.center, 'zoom:', ev.detail.zoom)
+                        }>
+                          <PoiMarkers list={locations} studentId={studentId} />
+                      </Map>
+                    ):(
+                      <p style={{color:"white"}}>טוען מיקום...</p>
+                    )
+          }
+        </div>     
     );
 }   
 
