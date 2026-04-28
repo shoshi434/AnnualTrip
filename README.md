@@ -52,13 +52,26 @@
 
 ---
 
-## 🦾 Tech Stack
+## 🦾 טכנולוגיות
 **Frontend:** React 19 •  Material-UI • React Router v7 • Google Maps API • Axios • jwt-decode
 **Backend:** Node.js • Express 5 • MongoDB • Mongoose 8 • JWT
 
 ---
 
-## ⚡ Quick Start
+## 😌 איך משתמשים
+1. בוחרים משתמש
+![alt text](image-1.png)
+2. אם אתה הורה- הזן ת"ז ותוכל לעקוב
+![alt text](image-1.png)
+![alt text](image-2.png)
+3. אם את תלמידת כיתה ו' - הירשמי לטיול
+![alt text](image-3.png)
+4. אם את מורה - היכנסי / הירשמי ותוכלי להתחיל לנהל
+![alt text](image-6.png)
+![alt text](image-4.png)
+![alt text](image-5.png)
+
+## ⚡ התחלה מהירה
 
 ### Prerequisites
 - Node.js 16+
@@ -111,7 +124,7 @@ npm start
 
 ---
 
-## 🕸️ Information sources
+## 🕸️ מקורות מידע
 
   - [react-google-maps — Get Started](https://visgl.github.io/react-google-maps/docs/get-started)
   - [Google Maps Platform & React](https://developers.google.com/codelabs/maps-platform/maps-platform-101-react-js?hl=he#1)
