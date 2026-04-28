@@ -6,7 +6,7 @@
 
 מערכת חכמה לניהול טיולים
 
-> **שימו לב** — המערכת נבנתה בהנחות:
+> **שימו לב** - המערכת נבנתה בהנחות:
 > - שהמורות והתלמידות שנרשמות עוברות סינכרון מול מערכות בית הספר כדי לוודא שהן אכן שייכות למוסד, וכדי למנוע רישום תלמידה בתור מורה ולהפך
 > - ת"ז הוא פרט חסוי שלא ידוע לאנשים נוספים
 
@@ -38,9 +38,17 @@
 
 ## 🌍 אבטחה
 
-- אימות משתמשים באמצעות **JWT** — טוקן נוצר בכניסה ומועבר בכל בקשה ב-header
+- אימות משתמשים באמצעות **JWT** - טוקן נוצר בכניסה ומועבר בכל בקשה ב-header
 - כל נתיבי ה-API מוגנים ב-middleware שמוודא תקינות הטוקן
-- הפרדה בין תפקידים: מורה / הורה — כל אחד רואה רק את המידע הרלוונטי לו
+- הפרדה בין תפקידים: מורה / הורה - כל אחד רואה רק את המידע הרלוונטי לו
+- חשיפת המידע אך ורק למורות, תלמידות יכולות רק להירשם!
+
+## ⌛ שיפורים עתידיים
+
+- **אוטומציה להדגמה** - יצירת סימולטור GPS מובנה שמאפשר הדגמה מלאה של המערכת ללא צורך במכשירי איכון אמיתיים
+- **עדכונים בזמן אמת עם WebSocket** - מנגנון WebSocket לעדכונים בזמן אמת
+- **שיפור תצוגת המפה** - מניעת התלכדות מרקרים כשתלמידות רבות קרובות זו לזו (Marker Clustering)
+
 
 ---
 
@@ -106,7 +114,7 @@ npm start
 ## 🕸️ Information sources
 
   - [react-google-maps — Get Started](https://visgl.github.io/react-google-maps/docs/get-started)
-  - [Google Maps Platform 101 עם React](https://developers.google.com/codelabs/maps-platform/maps-platform-101-react-js?hl=he#1)
+  - [Google Maps Platform & React](https://developers.google.com/codelabs/maps-platform/maps-platform-101-react-js?hl=he#1)
   - [Using the Haversine Formula in JavaScript](https://stackoverflow.com/questions/14560999/using-the-haversine-formula-in-javascript)
   - [MongoDB Geospatial Queries](https://www.mongodb.com/docs/manual/geospatial-queries/)
 
