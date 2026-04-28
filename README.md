@@ -1,8 +1,8 @@
-# ככה עושים היום טיול :)
+# ככה עושים היום טיול :) 🛼
 
 ---
 
-## אודות
+## ✨אודות
 
 מערכת חכמה לניהול טיולים
 
@@ -12,7 +12,7 @@
 
 ---
 
-## פיצ'רים במערכת
+## 🚀פיצ'רים במערכת
 
 ### זיהוי עם ת"ז
 - הרשמה למורים חדשים
@@ -36,18 +36,7 @@
 ### מערכת מעקב בזמן אמת להורים
 - הצגת מפה עם מיקום ילדם בזמן אמת בייחס לשאר ילדי הכיתה
 
----
-
-## טכנולוגיות
-
-| צד | טכנולוגיות |
-|---|---|
-| שרת | Express 5 • MongoDB • Mongoose 8 • JWT |
-| לקוח | React 19 • Material-UI • React Router v7 • Google Maps API • Axios • jwt-decode |
-
----
-
-## אבטחה
+## 🌍 אבטחה
 
 - אימות משתמשים באמצעות **JWT** — טוקן נוצר בכניסה ומועבר בכל בקשה ב-header
 - כל נתיבי ה-API מוגנים ב-middleware שמוודא תקינות הטוקן
@@ -55,52 +44,57 @@
 
 ---
 
-## התקנה והרצה
+## 🦾 Tech Stack
+**Frontend:** React 19 •  Material-UI • React Router v7 • Google Maps API • Axios • jwt-decode
+**Backend:** Node.js • Express 5 • MongoDB • Mongoose 8 • JWT
 
-### דרישות מוקדמות
+---
+
+## ⚡ Quick Start
+
+### Prerequisites
 - Node.js 16+
 - MongoDB
 - Google Cloud account (לקבלת API Key ו-Map ID)
 
-### התקנה
+### Installation
 
 ```bash
-# שכפול הריפוזיטורי
+
 git clone https://github.com/your-username/annual-trip.git
 cd annual-trip
 
-# התקנת תלויות שרת
+#Server
 cd server
 npm install
 
-# התקנת תלויות לקוח
+#Client
 cd ../client
 npm install
 ```
+ 
+ **Configure environment variables**
 
-### משתנים סביבתיים
-
-צור קובץ `.env` בתיקיית `server`:
+Create `.env` in `server/`:
 ```env
 PORT=5000
 MONGO_URI=mongodb://localhost:27017/annual-trip
 JWT_SECRET=your_jwt_secret
 ```
 
-צור קובץ `.env` בתיקיית `client`:
+Create `.env` in `client/`:
 ```env
 REACT_APP_GOOGLE_MAPS_API_KEY=your_google_maps_api_key
 REACT_APP_MAP_ID=your_map_id
 ```
 
-### הרצה
-
+**Run the application**
 ```bash
-# הרצת השרת
+# Terminal 1 - Server
 cd server
 npm start
 
-# הרצת הלקוח (טרמינל נפרד)
+# Terminal 2 - Client
 cd client
 npm start
 
@@ -109,16 +103,11 @@ npm start
 
 ---
 
-## מקורות מידע
+## 🕸️ Information sources
 
-- **גוגל מפות עם ריאקט**
   - [react-google-maps — Get Started](https://visgl.github.io/react-google-maps/docs/get-started)
   - [Google Maps Platform 101 עם React](https://developers.google.com/codelabs/maps-platform/maps-platform-101-react-js?hl=he#1)
-
-- **נוסחת Haversine**
   - [Using the Haversine Formula in JavaScript](https://stackoverflow.com/questions/14560999/using-the-haversine-formula-in-javascript)
-
-- **נתונים גיאו-מרחביים**
   - [MongoDB Geospatial Queries](https://www.mongodb.com/docs/manual/geospatial-queries/)
 
 ---
