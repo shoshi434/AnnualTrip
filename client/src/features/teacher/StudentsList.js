@@ -62,7 +62,7 @@ const StudentsList = () => {
                     </TableHead>
                     <TableBody>
                         {students.map((student) => (
-                            <TableRow  sx={{ "&:hover": { backgroundColor: "#2e2e2e" } }}>
+                            <TableRow key={student.id} sx={{ "&:hover": { backgroundColor: "#2e2e2e" } }}>
                                 <TableCell align="center" sx={{ color: "white" }}>{student.fullName}</TableCell>
                                 <TableCell align="center" sx={{ color: "white" }}>{student.id}</TableCell>
                                 <TableCell align="center" sx={{ color: "white" }}>{student.className}</TableCell>

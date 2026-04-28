@@ -19,6 +19,7 @@ app.use('/api/teachers', require('./router/teacher'));
 app.use('/api/auth', require('./router/auth'));
 app.use('/api/students', require('./router/student'));
 app.use('/api/locations', require('./router/location'));
+app.use('/api/distance', require('./router/distance'));
 
 //run
 

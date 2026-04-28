@@ -1,5 +1,6 @@
 const Location = require('../models/location');
 const Student = require('../models/student');
+const Teacher = require('../models/teacher');
 
 
 // יצירה  מיקום חדש או עדכון אם כבר קיים עבור התלמיד
@@ -10,8 +11,9 @@ const createLocation = async (req, res) => {
             return res.status(400).json({ message: "מיקום בפורמט שגוי" });
         }
         const thisStudent = await Student.findOne({ id: ID });
-        if (!thisStudent) {
-            return res.status(404).json({ message:"אי אפשר לשמור מיקום לילד לא רשום. אות פסול"});
+        const thisTeacher = await Teacher.findOne({ id: ID });
+        if (!thisStudent && !thisTeacher) {
+            return res.status(404).json({ message:"אות לא מוגדר"});
          }
         const existing = await Location.findOne({ id: ID });
         if (existing) {
@@ -34,6 +36,7 @@ const createLocation = async (req, res) => {
 }
 
 //קבלת כל המיקומים
+//פורמט מעובד
 //{key: 'operaHouse', location: { lat: -33.8567844, lng: 151.213108  }}
 const getAllLocations = async (req, res) => {
     try {
@@ -48,15 +51,21 @@ const getAllLocations = async (req, res) => {
     }
 }
 
-//קבלה לתלמידה ספציפית 
+//קבלה לתלמידים ספציפיים 
+//פורמט מעובד
+// פורמט קלט: {ids: [123456789, 987654321]}
 const getLocationById = async (req, res) => {
     try {
-        const { id } = req.params;
-        const location = await Location.findOne({ id });
-        if (!location) {
+        const { ids } = req.body;
+        const locations = await Location.find({ id: { $in: ids } });
+        if (!locations || locations.length === 0) {
             return res.status(404).json({ message: "מיקום לא נמצא" });
         }
-        res.json(location);
+        const editedList = locations.map(l => ({
+            key: l.id,
+            location: { lat: l.latitude, lng: l.longitude }
+        }));
+        res.json(editedList);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

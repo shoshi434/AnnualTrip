@@ -5,6 +5,6 @@ const { authMiddleware } = require('../middleware/authMiddleware');
 
 router.post('/', locationController.createLocation);
 router.get('/', authMiddleware,locationController.getAllLocations);
-router.get('/:id',authMiddleware, locationController.getLocationById);
+router.post('/byId',authMiddleware, locationController.getLocationById);
 
 module.exports = router;

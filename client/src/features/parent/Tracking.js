@@ -87,7 +87,7 @@ const Tracking = () => {
           {center ? (
                       <Map
                         defaultZoom={13}
-                        center={center}
+                        defaultCenter={center}
                         mapId={process.env.REACT_APP_MAP_ID}          
                         onCameraChanged={ (ev) =>
                         console.log('camera changed:', ev.detail.center, 'zoom:', ev.detail.zoom)
