@@ -61,7 +61,7 @@ const Detection = () => {
                 const data = await getStudentsByClassName(teacherClassName);
                 setStudents(data.data);
             } catch (error) {
-                console.error("Error fetching students:", error);
+                console.error("שגיאה בשליפת תלמידים:", error);
             }
         };
         fetchStudents();
@@ -77,7 +77,7 @@ const Detection = () => {
                 console.log("Locations received from server:", data.data);
                 setLocations(data.data);
             } catch (error) {
-                console.error("Error fetching locations:", error);
+                console.error("שגיאה בשליפת מיקומים:", error);
             }
         };
         fetchLocations();
@@ -112,7 +112,7 @@ const Detection = () => {
                     );
                     results[loc.key] = result.distance;
                 } catch (error) {
-                    console.error("Error calculating distance for", loc.id, error);
+                    console.error("שגיאה בחישוב מרחק", loc.id, error);
                 }
             }
             setDistances(results);
