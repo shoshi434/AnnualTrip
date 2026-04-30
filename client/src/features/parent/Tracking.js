@@ -13,7 +13,18 @@ const PoiMarkers = ({ list, studentId }) => {
           key={poi.key}
           position={poi.location}>
           <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center',}}>
-            <div style={{
+            <div style={poi.key === studentId ? {
+              backgroundColor: '#ffd700',
+              padding: '3px 10px',
+              borderRadius: '12px',
+              border: '2px solid #ff8c00',
+              fontSize: '13px',
+              fontWeight: 'bold',
+              marginBottom: '4px',
+              whiteSpace: 'nowrap',
+              boxShadow: '0px 0px 8px rgba(255,140,0,0.7)',
+              color: '#333',
+            } : {
               backgroundColor: 'white',
               padding: '2px 8px',
               borderRadius: '12px',
@@ -76,6 +87,9 @@ const Tracking = () => {
         };
 
         fetchLocations();
+        // עדכון המיקומים כל דקה
+        const interval = setInterval(fetchLocations, 60 * 1000); // polling כל דקה
+        return () => clearInterval(interval);
     }, [studentId]);
 
     return (
@@ -86,7 +100,7 @@ const Tracking = () => {
           </div>
           {center ? (
                       <Map
-                        defaultZoom={13}
+                        defaultZoom={16}
                         defaultCenter={center}
                         mapId={process.env.REACT_APP_MAP_ID}          
                         onCameraChanged={ (ev) =>

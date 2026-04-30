@@ -81,6 +81,9 @@ const Detection = () => {
             }
         };
         fetchLocations();
+        // עדכון המיקומים כל דקה
+        const interval = setInterval(fetchLocations, 60 * 1000); // polling כל דקה
+        return () => clearInterval(interval);
     }, [students]);
 
     //שליפת מיקום המורה
@@ -95,6 +98,8 @@ const Detection = () => {
             }
         };
         fetchTeacherLocation();
+        const interval = setInterval(fetchTeacherLocation, 60 * 1000); // polling כל דקה
+        return () => clearInterval(interval);
     }, [teacherId]);
 
     //חישוב מרחק בין המורה לתלמידות
@@ -146,7 +151,7 @@ const Detection = () => {
                 <div style={{ height: "60vh", width: "45vw"}}>
                     <h1 style={{fontFamily: "arial"}}>מיקומים על המפה</h1>
                     <Map
-                    defaultZoom={13}
+                    defaultZoom={15}
                     defaultCenter={center}
                     mapId={process.env.REACT_APP_MAP_ID}>
                     <PoiMarkers list={all} teacherId={teacherId} />

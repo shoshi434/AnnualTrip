@@ -45,8 +45,7 @@
 
 ## ⌛ שיפורים עתידיים
 
-- **אוטומציה להדגמה** - יצירת סימולטור GPS מובנה שמאפשר הדגמה מלאה של המערכת ללא צורך במכשירי איכון אמיתיים
-- **עדכונים בזמן אמת עם WebSocket** - מנגנון WebSocket לעדכונים בזמן אמת
+- **עדכונים בזמן אמת עם WebSocket** - להחליף את ה-polling במנגנון WebSocket
 - **שיפור תצוגת המפה** - מניעת התלכדות מרקרים כשתלמידות רבות קרובות זו לזו (Marker Clustering)
 
 
@@ -54,6 +53,7 @@
 
 ## 🦾 טכנולוגיות
 **Frontend:** React 19 •  Material-UI • React Router v7 • Google Maps API • Axios • jwt-decode
+
 **Backend:** Node.js • Express 5 • MongoDB • Mongoose 8 • JWT
 
 ---
@@ -136,7 +136,7 @@ npm start
 
 ## 🕸️ מקורות מידע
 
-  - [react-google-maps — Get Started](https://visgl.github.io/react-google-maps/docs/get-started)
+  - [react-google-maps - Get Started](https://visgl.github.io/react-google-maps/docs/get-started)
   - [Google Maps Platform & React](https://developers.google.com/codelabs/maps-platform/maps-platform-101-react-js?hl=he#1)
   - [Using the Haversine Formula in JavaScript](https://stackoverflow.com/questions/14560999/using-the-haversine-formula-in-javascript)
   - [MongoDB Geospatial Queries](https://www.mongodb.com/docs/manual/geospatial-queries/)
